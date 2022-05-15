@@ -12,7 +12,7 @@ class HaulersController < ApplicationController
     if @hauler.save
       redirect_to haulers_path, notice: 'Transportadora cadastrada com sucesso'
     else
-      flash.now[:notice] = 'Erro ao cadastrar transportadora'
+      flash.now[:alert] = 'Erro ao cadastrar transportadora'
       render :new, status: :unprocessable_entity
     end
   end

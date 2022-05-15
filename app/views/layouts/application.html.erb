@@ -16,8 +16,12 @@
       <h1><%= link_to 'Delivery </> app', root_path %></h1>
     </header>
     <main class="container">
-      <%= notice %>
-      <%= alert %>
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>
