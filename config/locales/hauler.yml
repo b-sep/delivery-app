@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      hauler: 'Transportadora'
+    attributes:
+      hauler:
+        brand_name: 'Nome Fantasia'
+        corporate_name: 'Razão Social'
+        address: 'Endereço'
+        email_domain: 'Domínio de email'
+        registration_number: 'CNPJ'
