@@ -28,5 +28,7 @@ describe 'usuário administrador acessa opção para cadastrar transportadora' d
     click_on 'Cadastrar Transportadora'
 
     expect(page).to have_content 'Erro ao cadastrar transportadora'
+    expect(page).to have_content 'Razão Social não pode ficar em branco'
+    expect(page).to have_content 'Nome Fantasia não pode ficar em branco'
   end
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DeliveryApp</title>
+    <title>Delivery </> app</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,8 +13,17 @@
 
   <body>
     <header class="container mt-3 text-center">
-      <h1><%= link_to 'Delivery </> app', root_path %></h1>
+      <h1 class="display-3"><%= link_to 'Delivery </> app', root_path %></h1>
+      <nav>
+        <% if user_signed_in? %>
+          <span>Olá, <%= current_user.name %></span>
+          <%= link_to 'Sair', destroy_user_session_path, data: { turbo_method: :delete} %>
+        <% else %>
+          <span><%= link_to 'Entrar', new_user_session_path %></span>
+        <% end %>
+      </nav>
     </header>
+
     <main class="container">
       <% flash.each do |type, message| %>
         <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show" role="alert">
@@ -24,5 +33,8 @@
       <% end %>
       <%= yield %>
     </main>
+
+    <footer>
+    </footer>
   </body>
 </html>
