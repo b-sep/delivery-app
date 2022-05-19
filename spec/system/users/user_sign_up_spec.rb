@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe 'usuário se cadastra na aplicação' do
-  it 'com sucesso' do
+  it 'e é vinculado a uma transportadora automaticamente' do
+
+    Hauler.create!(brand_name: 'Transporte 323', corporate_name: 'Transporte LTDA2', registration_number: '00000000000001', address: 'qnd 02', email_domain: 'transporte2.com.br')
+    Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', email_domain: 'transporte.com.br')
 
     visit root_path
     within 'nav' do
@@ -9,7 +12,7 @@ describe 'usuário se cadastra na aplicação' do
     end
     click_on 'Não tem conta? CADASTRE-SE.'
     fill_in 'Nome', with: 'Roberto'
-    fill_in 'E-mail', with: 'jr2@treinadev.com.br'
+    fill_in 'E-mail', with: 'jr2@transporte.com.br'
     fill_in 'Senha', with: 'treinadev08'
     fill_in 'Confirme sua senha', with: 'treinadev08'
     fill_in 'Data de nascimento', with: '10/04/1992'
@@ -20,7 +23,6 @@ describe 'usuário se cadastra na aplicação' do
       expect(page).to have_link 'Sair'
     end
     expect(page).to have_content 'Cadastro criado com sucesso'
-    user = User.last
-    expect(user.name).to eq 'Roberto'
+    expect(page).to have_content 'Transportadora: Transporte 322'
   end
 end

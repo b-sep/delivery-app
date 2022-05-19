@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'home#index'
-  resources :haulers, only: %i[index new create]
+  devise_for :admins
+  devise_for :users
+ 
+  namespace :admin do
+    resources :haulers
+  end
+  
 end

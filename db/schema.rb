@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_16_033923) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_19_023410) do
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
   create_table "haulers", force: :cascade do |t|
     t.string "brand_name"
     t.string "corporate_name"
@@ -31,8 +43,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_033923) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "birth_date"
+    t.integer "hauler_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["hauler_id"], name: "index_users_on_hauler_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "license_plate"
+    t.integer "full_load"
+    t.string "car_model"
+    t.string "year"
+    t.string "vehicle_brand"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "hauler_id", null: false
+    t.index ["hauler_id"], name: "index_vehicles_on_hauler_id"
+  end
+
+  add_foreign_key "users", "haulers"
+  add_foreign_key "vehicles", "haulers"
 end

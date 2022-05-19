@@ -1,0 +1,43 @@
+<%= form_with model: [:admin, hauler] do |f| %>
+  <fieldset>
+    <%= f.label :corporate_name %>
+    <%= f.text_field :corporate_name, placeholder: 'Bom transporte irmãos LTDA' %>
+    <% @hauler.errors.full_messages_for(:corporate_name).each do |msg| %>
+      <%= msg %></br>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :brand_name %>
+    <%= f.text_field :brand_name, placeholder: 'Bom transporte' %>
+    <% @hauler.errors.full_messages_for(:brand_name).each do |msg| %>
+      <%= msg %></br>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :address %>
+    <%= f.text_field :address, placeholder: 'rua são mateus, 1000' %>
+    <% @hauler.errors.full_messages_for(:address).each do |msg| %>
+      <%= msg %></br>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :registration_number %>
+    <%= f.text_field :registration_number, placeholder: '00000000000000' %>
+    <% @hauler.errors.full_messages_for(:registration_number).each do |msg| %>
+      <%= msg %></br>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :email_domain %>
+    <%= f.text_field :email_domain, placeholder: 'suaempresa.com.br' %>
+    <% @hauler.errors.full_messages_for(:email_domain).each do |msg| %>
+      <%= msg %></br>
+    <% end %>
+  </fieldset>
+
+  <%= f.submit @hauler.persisted? ? 'Salvar Transportadora' : 'Cadastrar Transportadora' %>
+<% end %>
