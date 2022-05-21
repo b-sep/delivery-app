@@ -12,4 +12,4 @@ Admin.create!(email: 'jr@treinadev.com.br', password: '123456')
 
 User.create!(email: 'jr2@transporte.com.br', password: '123456', name: 'Jr', birth_date: '10/04/1992')
 
-Vehicle.create!(license_plate: 'jka-1234', full_load: 100, car_model: 'sandero', year: '2020', vehicle_brand: 'Renault', hauler: hauler)
+Vehicle.create!(license_plate: 'jka1234', full_load: 100, car_model: 'sandero', year: '2020', vehicle_brand: 'Renault', hauler: hauler)

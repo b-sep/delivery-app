@@ -8,7 +8,7 @@ describe 'usuário cadastra veículo a transportadora' do
     login_as user
     visit user_hauler_vehicles_path(hauler)
     click_on 'Cadastrar veículo'
-    fill_in 'Placa', with: 'AAA-1234'
+    fill_in 'Placa', with: 'AAA1234'
     fill_in 'Carga máxima', with: 100
     fill_in 'Modelo', with: 'sandero'
     fill_in 'Ano', with: '2020'
