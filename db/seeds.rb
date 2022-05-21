@@ -8,7 +8,7 @@
 
 hauler = Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', email_domain: 'transporte.com.br')
 
-Admin.create!(email: 'jr@treinadev.com.br', password: '123456')
+Admin.create!(email: 'jr@deliveryapp.com', password: '123456')
 
 User.create!(email: 'jr2@transporte.com.br', password: '123456', name: 'Jr', birth_date: '10/04/1992')
 

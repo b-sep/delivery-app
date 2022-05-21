@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe 'administrador acessa opção para cadastrar transportadora' do
   it 'e cadastra com sucesso' do
-    admin  = Admin.create!(email: 'jr@treinadev.com.br', password: '123treinadev')
+    admin  = Admin.create!(email: 'jr@deliveryapp.com', password: '123treinadev')
 
     visit root_path
     within ('nav') do
       click_on 'Admin?'
     end
     within 'form' do
-      fill_in 'E-mail', with: 'jr@treinadev.com.br'
+      fill_in 'E-mail', with: 'jr@deliveryapp.com'
       fill_in 'Senha', with: '123treinadev'
       click_on 'ENTRAR'
     end
@@ -26,14 +26,14 @@ describe 'administrador acessa opção para cadastrar transportadora' do
   end
 
   it 'e cadastra sem sucesso' do
-    admin  = Admin.create!(email: 'jr@treinadev.com.br', password: '123treinadev')
+    admin  = Admin.create!(email: 'jr@deliveryapp.com', password: '123treinadev')
 
     visit root_path
     within ('nav') do
       click_on 'Admin?'
     end
     within 'form' do
-      fill_in 'E-mail', with: 'jr@treinadev.com.br'
+      fill_in 'E-mail', with: 'jr@deliveryapp.com'
       fill_in 'Senha', with: '123treinadev'
       click_on 'ENTRAR'
     end
