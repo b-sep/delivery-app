@@ -2,6 +2,4 @@
 
 <% if admin_signed_in? %>
   <%= link_to 'Cadastrar transportadora', new_admin_hauler_path %>
-<% elsif user_signed_in? %>
-  <p>Transportadora: <%= current_user.hauler.brand_name %></p>
 <% end %>

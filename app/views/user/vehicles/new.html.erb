@@ -1,0 +1,30 @@
+<h1>Cadastrar Veículo</h1>
+
+<%= form_with model: [:user, @hauler, @vehicle] do |f| %>
+  <fieldset>
+    <%= f.label :license_plate %>
+    <%= f.text_field :license_plate %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :full_load %>
+    <%= f.text_field :full_load %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :car_model %>
+    <%= f.text_field :car_model %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :year %>
+    <%= f.text_field :year %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :vehicle_brand %>
+    <%= f.text_field :vehicle_brand %>
+  </fieldset>
+
+  <%= f.submit 'Salvar Veículo' %>
+<% end %>

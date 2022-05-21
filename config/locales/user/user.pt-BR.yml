@@ -6,3 +6,4 @@ pt-BR:
       user:
         name: 'Nome'
         birth_date: 'Data de nascimento'
+        hauler: 'Transportadora'
