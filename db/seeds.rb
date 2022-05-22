@@ -13,3 +13,7 @@ Admin.create!(email: 'jr@deliveryapp.com', password: '123456')
 User.create!(email: 'jr2@transporte.com.br', password: '123456', name: 'Jr', birth_date: '10/04/1992')
 
 Vehicle.create!(license_plate: 'jka1234', full_load: 100, car_model: 'sandero', year: '2020', vehicle_brand: 'Renault', hauler: hauler)
+
+Price.create!(min_cubic_meter: 0.001, max_cubic_meter: 0.500, min_weight: 1, max_weight: 20, km_price: 2, hauler: hauler)
+
+Price.create!(min_cubic_meter: 0.500, max_cubic_meter: 1, min_weight: 1, max_weight: 20, km_price: 4, hauler: hauler)

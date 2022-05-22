@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_19_023410) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_22_031226) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -31,6 +31,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_023410) do
     t.string "email_domain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.decimal "min_cubic_meter"
+    t.decimal "max_cubic_meter"
+    t.integer "min_weight"
+    t.integer "max_weight"
+    t.decimal "km_price"
+    t.integer "hauler_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hauler_id"], name: "index_prices_on_hauler_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_023410) do
     t.index ["hauler_id"], name: "index_vehicles_on_hauler_id"
   end
 
+  add_foreign_key "prices", "haulers"
   add_foreign_key "users", "haulers"
   add_foreign_key "vehicles", "haulers"
 end

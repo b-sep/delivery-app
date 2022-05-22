@@ -1,4 +1,5 @@
 class User::VehiclesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_hauler, only: %i[index new create]
   before_action :set_vehicle, only: %i[show]
 

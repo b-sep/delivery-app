@@ -37,4 +37,12 @@ describe 'usuário visualiza lista de veículos' do
     expect(page).to have_content 'Marca: Renault'
     expect(page).not_to have_content 'Modelo: clio'
   end
+
+  it 'e precisa estar logado' do
+    hauler = Hauler.create!(brand_name: 'Transporte 323', corporate_name: 'Transporte LTDA2', registration_number: '00000000000001', address: 'qnd 02', email_domain: 'transporte2.com.br')
+
+    visit user_hauler_path(hauler)
+
+    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+  end
 end

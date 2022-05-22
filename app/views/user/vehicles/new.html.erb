@@ -4,26 +4,41 @@
   <fieldset>
     <%= f.label :license_plate %>
     <%= f.text_field :license_plate %>
+    <% @vehicle.errors.full_messages_for(:license_plate).each do |message| %>
+      <%= message %>
+    <% end %>
   </fieldset>
 
   <fieldset>
     <%= f.label :full_load %>
     <%= f.text_field :full_load %>
+    <% @vehicle.errors.full_messages_for(:full_load).each do |message| %>
+      <%= message %>
+    <% end %>
   </fieldset>
 
   <fieldset>
     <%= f.label :car_model %>
     <%= f.text_field :car_model %>
+    <% @vehicle.errors.full_messages_for(:car_model).each do |message| %>
+      <%= message %>
+    <% end %>
   </fieldset>
 
   <fieldset>
     <%= f.label :year %>
     <%= f.text_field :year %>
+    <% @vehicle.errors.full_messages_for(:year).each do |message| %>
+      <%= message %>
+    <% end %>
   </fieldset>
 
   <fieldset>
     <%= f.label :vehicle_brand %>
     <%= f.text_field :vehicle_brand %>
+    <% @vehicle.errors.full_messages_for(:vehicle_brand).each do |message| %>
+      <%= message %>
+    <% end %>
   </fieldset>
 
   <%= f.submit 'Salvar Veículo' %>

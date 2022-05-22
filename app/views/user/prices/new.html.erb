@@ -1,0 +1,45 @@
+<h1>Cadastrar novo preço</h1>
+
+<%= form_with model: [:user, @hauler, @price] do |f| %>
+  <fieldset>
+    <%= f.label :min_cubic_meter, autofocus: true %>
+    <%= f.number_field :min_cubic_meter, step: 0.001, min: 0 %>
+    <% @price.errors.full_messages_for(:min_cubic_meter).each do |message| %>
+      <%= message %>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :max_cubic_meter %>
+    <%= f.number_field :max_cubic_meter, step: 0.001, min: 0 %>
+    <% @price.errors.full_messages_for(:max_cubic_meter).each do |message| %>
+      <%= message %>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :min_weight %>
+    <%= f.number_field :min_weight, step: 0.1, min: 0 %>
+    <% @price.errors.full_messages_for(:min_weight).each do |message| %>
+      <%= message %>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :max_weight %>
+    <%= f.number_field :max_weight, step: 0.1, min: 0 %>
+    <% @price.errors.full_messages_for(:max_weight).each do |message| %>
+      <%= message %>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :km_price %>
+    <%= f.number_field :km_price, min: 0 %>
+    <% @price.errors.full_messages_for(:km_price).each do |message| %>
+      <%= message %>
+    <% end %>
+  </fieldset>
+
+  <%= f.submit 'Salvar preço' %>
+<% end %>
