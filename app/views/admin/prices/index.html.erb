@@ -41,6 +41,7 @@
         <p>Volume do pacote: <%= @cubic_meter %>m³</p>
         <p>Distância: <%= @distance %>kms</p>
         <p>Valor total: <%= number_to_currency(price.km_price.to_f * @distance) %> reais</p>
+        <p>Prazo: <%= price.hauler.delivery_dates.map {|p|p.days }.slice(0) %> <%= price.hauler.delivery_dates.map {|p|p.days }.slice(0) == 1 ? 'dia' : 'dias' %></p>
       </section>
       <hr>
     <% end %>

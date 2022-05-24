@@ -5,8 +5,6 @@ describe 'admin visualiza preços dos fretes' do
     admin = Admin.create!(email: 'jr@deliveryapp.com', password: '123456')
 
     hauler = Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', email_domain: 'transporte.com.br', status: 'active')
-    
-    hauler2 = Hauler.create!(brand_name: 'Transporte 312', corporate_name: 'Transporte LTDA2', registration_number: '00000100000000', address: 'qnd 04', email_domain: 'transporte2.com.br', status: 'active')
 
     hauler3 = Hauler.create!(brand_name: 'Transporte 3111', corporate_name: 'Transporte LTDA3', registration_number: '00000200000000', address: 'qnd 05', email_domain: 'transporte3.com.br', status: 'active')
 
@@ -14,7 +12,9 @@ describe 'admin visualiza preços dos fretes' do
 
     Price.create!(min_cubic_meter: 0.001, max_cubic_meter: 0.500, min_weight: 1, max_weight: 20, km_price: 4, hauler: hauler3)
 
-    Price.create!(min_cubic_meter: 1, max_cubic_meter: 2, min_weight: 1, max_weight: 20, km_price: 3, hauler: hauler2)
+    DeliveryDate.create!(distance_1: 0, distance_2: 100, days: 1, hauler: hauler)
+
+    DeliveryDate.create!(distance_1: 0, distance_2: 100, days: 3, hauler: hauler3)
 
     login_as(admin, :scope => :admin)
     visit admin_haulers_path
@@ -30,11 +30,13 @@ describe 'admin visualiza preços dos fretes' do
     expect(page).to have_content 'Volume do pacote: 0.262626m³'
     expect(page).to have_content 'Distância: 99kms'
     expect(page).to have_content 'Valor total: R$ 198,00 reais'
+    expect(page).to have_content 'Prazo: 1 dia'
 
     expect(page).to have_content 'Transportadora: Transporte 3111'
     expect(page).to have_content 'Volume do pacote: 0.262626m³'
     expect(page).to have_content 'Distância: 99kms'
     expect(page).to have_content 'Valor total: R$ 396,00 reais'
+    expect(page).to have_content 'Prazo: 3 dias'
   end
 
   it 'e não existe transportadora ativa' do

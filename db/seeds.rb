@@ -23,4 +23,4 @@ Price.create!(min_cubic_meter: 0.001, max_cubic_meter: 0.500, min_weight: 1, max
 
 DeliveryDate.create!(distance_1: 0, distance_2: 100, days: 1, hauler: hauler)
 
-DeliveryDate.create!(distance_1: 101, distance_2: 250, days: 3, hauler: hauler)
+DeliveryDate.create!(distance_1: 0, distance_2: 100, days: 3, hauler: hauler2)
