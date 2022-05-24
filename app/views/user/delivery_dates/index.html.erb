@@ -1,0 +1,13 @@
+<h1>Prazos</h1>
+
+<% if @delivery_dates.empty? %>
+  <h4>Nenhum prazo cadastrado.</h4>
+<% else %>
+  <section>
+    <% @delivery_dates.each do |dd| %>
+      Entre <%= dd.distance_1 %> e <%= dd.distance_2 %>kms, <%= dd.days %> <%= dd.days == 1 ? 'dia' : 'dias' %><br>
+    <% end %>
+  </section>
+<% end %>
+
+<%= link_to 'Cadastrar prazo', new_user_hauler_delivery_date_path(@hauler) %>

@@ -1,0 +1,29 @@
+<h1>Cadastrar Prazo</h1>
+
+<%= form_with model: [:user, @hauler, @delivery_date] do |f| %>
+  <fieldset>
+    <%= f.label :distance_1 %>
+    <%= f.number_field :distance_1, min: 0 %>
+    <% @delivery_date.errors.full_messages_for(:distance_1).each do |message| %>
+      <%= message %>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :distance_2 %>
+    <%= f.number_field :distance_2, min: 0 %>
+    <% @delivery_date.errors.full_messages_for(:distance_2).each do |message| %>
+      <%= message %>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :days %>
+    <%= f.number_field :days, min: 0 %>
+    <% @delivery_date.errors.full_messages_for(:days).each do |message| %>
+      <%= message %>
+    <% end %>
+  </fieldset>
+
+  <%= f.submit 'Salvar prazo' %>
+<% end %>

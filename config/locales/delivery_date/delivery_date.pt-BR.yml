@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      delivery_date: 'Data de entrega'
+    attributes:
+      delivery_date:
+        distance_1: 'Primeira distância'
+        distance_2: 'Segunda distância'
+        days: 'Dias'
