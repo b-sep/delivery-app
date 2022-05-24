@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'administrador acessa opção para cadastrar transportadora' do
-  it 'e cadastra com sucesso' do
+  it 'e cadastra com sucesso e a transportadora nasce inativa' do
     admin  = Admin.create!(email: 'jr@deliveryapp.com', password: '123treinadev')
 
     visit root_path
@@ -22,7 +22,9 @@ describe 'administrador acessa opção para cadastrar transportadora' do
     fill_in 'Domínio de email', with: 'bomtransporte.com.br'
     click_on 'Cadastrar Transportadora'
     
+    expect(current_path).to eq '/admin/haulers/1'
     expect(page).to have_content 'Transportadora cadastrada com sucesso'
+    expect(page).to have_content 'Status: Inativa'
   end
 
   it 'e cadastra sem sucesso' do

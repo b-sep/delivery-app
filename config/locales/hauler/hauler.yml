@@ -9,3 +9,5 @@ pt-BR:
         address: 'Endereço'
         email_domain: 'Domínio de email'
         registration_number: 'CNPJ'
+        inactive: 'Inativa'
+        active: 'Ativa'

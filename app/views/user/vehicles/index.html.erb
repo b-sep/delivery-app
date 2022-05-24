@@ -1,6 +1,12 @@
-<% @vehicles.each do |vehicle| %>
-  <p>Modelo: <%= link_to vehicle.car_model, user_hauler_vehicle_path(@hauler, vehicle) %></p>
-  <p>Ano: <%= vehicle.year %></p>
+<h1>Veículos</h1>
+
+<% if @vehicles.empty? %>
+  <h3>Nenhum veículo cadastrado</h3>
+<% else %>
+  <% @vehicles.each do |vehicle| %>
+    <p>Modelo: <%= link_to vehicle.car_model, user_hauler_vehicle_path(@hauler, vehicle) %></p>
+    <p>Ano: <%= vehicle.year %></p>
+  <% end %>
 <% end %>
 
 <%= link_to 'Cadastrar veículo', new_user_hauler_vehicle_path(@hauler) %>

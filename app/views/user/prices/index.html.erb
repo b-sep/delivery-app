@@ -1,9 +1,13 @@
 <h1>Preços</h1>
 
-<% @prices.each do |price| %>
-  <section>
-    <p>Entre <%= price.min_cubic_meter %> a <%= price.max_cubic_meter %>m³ e peso entre <%= price.min_weight %> e <%= price.max_weight %>kgs o valor é de <%= number_to_currency(price.km_price) %> reais por km. </p>
-  </section>
+<% if @prices.empty? %>
+  <h3>Nenhum preço cadastrado</h3>
+<% else %>
+  <% @prices.each do |price| %>
+    <section>
+      <p>Entre <%= price.min_cubic_meter %> a <%= price.max_cubic_meter %>m³ e peso entre <%= price.min_weight %> e <%= price.max_weight %>kgs o valor é de <%= number_to_currency(price.km_price) %> reais por km. </p>
+    </section>
+  <% end %>
 <% end %>
 
 <%= link_to 'Cadastrar novo preço', new_user_hauler_price_path(@hauler) %>

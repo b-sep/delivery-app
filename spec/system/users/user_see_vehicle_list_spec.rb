@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'usuário visualiza lista de veículos' do
-
   it 'com sucesso' do
     hauler = Hauler.create!(brand_name: 'Transporte 323', corporate_name: 'Transporte LTDA2', registration_number: '00000000000001', address: 'qnd 02', email_domain: 'transporte2.com.br')
     user = User.create!(name: 'Júnior', email: 'jr@transporte2.com.br', password: 'treinadev08', birth_date: '10/04/1992')
@@ -36,6 +35,17 @@ describe 'usuário visualiza lista de veículos' do
     expect(page).to have_content 'Placa: jka1234'
     expect(page).to have_content 'Marca: Renault'
     expect(page).not_to have_content 'Modelo: clio'
+  end
+
+  it 'e não tem nenhum veículo cadastrado' do
+    hauler = Hauler.create!(brand_name: 'Transporte 323', corporate_name: 'Transporte LTDA2', registration_number: '00000000000001', address: 'qnd 02', email_domain: 'transporte2.com.br')
+    user = User.create!(name: 'Júnior', email: 'jr@transporte2.com.br', password: 'treinadev08', birth_date: '10/04/1992')
+
+    login_as user
+    visit user_hauler_path(hauler)
+    click_on 'Gerenciar Veículos'
+
+    expect(page).to have_content 'Nenhum veículo cadastrado'
   end
 
   it 'e precisa estar logado' do

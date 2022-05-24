@@ -24,4 +24,15 @@ describe 'usuário ve lista de preços da transportadora' do
     visit user_hauler_prices_path(hauler)
     expect(page).to have_content 'Para continuar, faça login ou registre-se.'
   end
+
+  it 'e não tem nenhum preço cadastrado' do
+    hauler = Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', email_domain: 'transporte.com.br')
+
+    user = User.create!(email: 'jr2@transporte.com.br', password: '123456', name: 'Jr', birth_date: '10/04/1992')
+
+    login_as user
+    visit user_hauler_prices_path(hauler)
+
+    expect(page).to have_content 'Nenhum preço cadastrado'
+  end
 end
