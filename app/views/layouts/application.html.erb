@@ -16,13 +16,15 @@
       <h1 class="display-3"><%= link_to 'Delivery </> app', root_path %></h1>
       <nav>
         <% if user_signed_in? %>
-          <span>Olá, <%= current_user.name %></span>
+          <%= link_to 'Home', user_hauler_path(current_user) %> |
           <%= link_to 'Sair', destroy_user_session_path, data: { turbo_method: :delete} %>
+          <span>Olá, <%= current_user.name %></span>
         <% elsif admin_signed_in? %>
-        <span>Olá, <%= current_admin.email %></span>
+          <%= link_to 'Home', admin_haulers_path(current_user) %> |
           <%= link_to 'Sair', destroy_admin_session_path, data: { turbo_method: :delete} %>
+          <span>Olá, <%= current_admin.email %></span>
         <% else %>
-          <span><%= link_to 'Entrar', new_user_session_path %> | </span>
+          <span><%= link_to 'Entrar', new_user_session_path %> |</span>
           <span><%= link_to 'Admin?', new_admin_session_path %></span>
         <% end %>
       </nav>

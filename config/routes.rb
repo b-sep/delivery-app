@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :admins
 
   namespace :admin do
+    resources :prices, only: %i[index]
+    resources :orders, only: %i[index]
     resources :haulers
   end
 

@@ -1,6 +1,12 @@
 class Admin::HaulersController < ApplicationController 
-  before_action :authenticate_admin!, only: %i[new]
+  before_action :authenticate_admin!
   before_action :get_hauler, only: %i[show]
+
+  def index
+    @haulers = Hauler.all
+    @prices = Price.all
+  end
+
   def new
     @hauler = Hauler.new
   end

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
       if resource.is_a?(User)
         user_hauler_path(current_user)
       else
-        super
+        admin_haulers_path(current_user)
       end
   end  
 end

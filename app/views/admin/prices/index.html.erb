@@ -1,0 +1,49 @@
+<h1>Consultar preços</h1>
+
+<%= form_with url: admin_prices_path, method: :get do |form| %>
+  <fieldset>
+    <%= form.label :heigth, 'Altura' %>
+    <%= form.number_field :heigth %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :depth, 'Profundidade' %>
+    <%= form.number_field :depth %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :width, 'Largura' %>
+    <%= form.number_field :width %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :weight, 'Peso' %>
+    <%= form.number_field :weight %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :distance, 'Distancia' %>
+    <%= form.number_field :distance %>
+  </fieldset>
+
+  <%= form.submit 'CONSULTAR' %>
+<% end %>
+
+ 
+<% if @prices.empty? %>
+  <strong>Nenhuma transportadora ativa</strong>
+<% else %>
+  <% if params[:heigth].present? && params[:depth].present? && params[:width].present? && params[:distance].present? %>
+    <hr>
+    <% @prices.each do |price| %>
+      <section>
+        <strong>Transportadora: <%= price.hauler.brand_name %></p></strong>
+        <p>Volume do pacote: <%= @cubic_meter %>m³</p>
+        <p>Distância: <%= @distance %>kms</p>
+        <p>Valor total: <%= number_to_currency(price.km_price.to_f * @distance) %> reais</p>
+      </section>
+      <hr>
+    <% end %>
+    <%= link_to 'Limpar', render: admin_prices_path %>
+  <% end %>
+<% end %>

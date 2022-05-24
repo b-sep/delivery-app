@@ -1,0 +1,12 @@
+<h1>Transportadoras</h1>
+
+<%= link_to 'Cadastrar transportadora', new_admin_hauler_path %>
+<%= link_to 'Consultar preços', admin_prices_path %>
+
+<section>
+  <% @haulers.each do |hauler| %>
+    <%= hauler.brand_name %><br>
+  <% end %>
+</section>
+
+<hr>
