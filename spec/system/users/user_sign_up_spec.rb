@@ -24,5 +24,6 @@ describe 'usuário se cadastra na aplicação' do
     end
     expect(page).to have_content 'Cadastro criado com sucesso'
     expect(page).to have_content 'Transportadora: Transporte 322'
+    expect(User.last.hauler).to eq Hauler.last
   end
 end

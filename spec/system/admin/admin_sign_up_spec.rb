@@ -10,8 +10,9 @@ describe 'usuário se cadastrar como admin' do
     fill_in 'Confirme sua senha', with: '123456'
     click_on 'CADASTRAR'
 
-    expect(page).to have_content 'Cadastrar transportadora'
+    expect(page).to have_content 'Transportadoras'
     expect(page).to have_content 'Cadastro criado com sucesso'
+    expect(current_path).to eq admin_delivery_app_path
   end
 
   it 'sem sucesso' do

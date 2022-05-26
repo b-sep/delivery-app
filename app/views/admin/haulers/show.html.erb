@@ -1,3 +1,9 @@
-<h1>Transportadora <%= @hauler.brand_name %> </h1>
+<h1><%= @hauler.brand_name %></h1>
 
-<h4>Status: <%= Hauler.human_attribute_name("#{@hauler.status}") %></h4>
+<section>
+  <h5>Razão social: <%= @hauler.corporate_name %></h5>
+  <h5>Cnpj: <%= @hauler.registration_number %></h5>
+  <h5>Endereço: <%= @hauler.address %></h5>
+  <h5>E-mail: <%= @hauler.email_domain %></h5>
+  <h5>Status: <%= Hauler.human_attribute_name("#{@hauler.status}") %></h5>
+</section>

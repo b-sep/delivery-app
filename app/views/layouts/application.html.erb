@@ -20,7 +20,7 @@
           <%= link_to 'Sair', destroy_user_session_path, data: { turbo_method: :delete} %>
           <span>Olá, <%= current_user.name %></span>
         <% elsif admin_signed_in? %>
-          <%= link_to 'Home', admin_haulers_path(current_user) %> |
+          <%= link_to 'Home', admin_delivery_app_path %> |
           <%= link_to 'Sair', destroy_admin_session_path, data: { turbo_method: :delete} %>
           <span>Olá, <%= current_admin.email %></span>
         <% else %>

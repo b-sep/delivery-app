@@ -1,0 +1,7 @@
+<h1>Ordem <%= @order.code %></h1>
+
+<section>
+  <h4>Transportadora: <%= @order.hauler.brand_name %></h4>
+  <h4>Prazo de entrega: <%= @order.days %> <%= @order.days == 1 ? 'dia' : 'dias' %></h4>
+  <h4><%= number_to_currency(@order.price) %></h4>
+</section>

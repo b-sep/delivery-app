@@ -11,6 +11,7 @@ describe 'admin faz login' do
     click_on 'ENTRAR'
 
     expect(page).to have_content 'Login efetuado com sucesso.'
-    expect(page).to have_content 'Cadastrar transportadora'
+    expect(page).to have_content 'Transportadoras'
+    expect(current_path).to eq admin_delivery_app_path
   end
 end

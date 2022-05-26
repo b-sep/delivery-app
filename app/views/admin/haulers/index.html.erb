@@ -1,12 +1,16 @@
 <h1>Transportadoras</h1>
 
 <%= link_to 'Cadastrar transportadora', new_admin_hauler_path %>
-<%= link_to 'Consultar preços', admin_prices_path %>
 
-<section>
-  <% @haulers.each do |hauler| %>
-    <%= hauler.brand_name %><br>
-  <% end %>
-</section>
-
-<hr>
+<% if @haulers.empty? %>
+  <h3>Nenhuma transportadora cadastrada.</h3>
+<% else %>
+  <section>
+    <% @haulers.each do |hauler| %>
+      <h4>
+        <%= link_to hauler.brand_name, admin_hauler_path(hauler) %>
+      </h4>
+      <h4>Cnpj: <%= hauler.registration_number %></h4>
+    <% end %>
+  </section>
+<% end %>

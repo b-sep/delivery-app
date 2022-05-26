@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'administrador acessa opção para cadastrar transportadora' do
-  it 'e cadastra com sucesso e a transportadora nasce inativa' do
+  it 'cadastra com sucesso e a transportadora nasce inativa' do
     admin  = Admin.create!(email: 'jr@deliveryapp.com', password: '123treinadev')
 
     visit root_path
@@ -14,6 +14,7 @@ describe 'administrador acessa opção para cadastrar transportadora' do
       click_on 'ENTRAR'
     end
 
+    click_on 'Transportadoras'
     click_on 'Cadastrar transportadora'
     fill_in 'Razão Social', with: 'Bom transporte LTDA'
     fill_in 'Nome Fantasia', with: 'Bom transporte'
@@ -39,6 +40,7 @@ describe 'administrador acessa opção para cadastrar transportadora' do
       fill_in 'Senha', with: '123treinadev'
       click_on 'ENTRAR'
     end
+    click_on 'Transportadoras'
     click_on 'Cadastrar transportadora'
     fill_in 'Razão Social', with: ''
     fill_in 'Nome Fantasia', with: ''
