@@ -1,7 +1,12 @@
-<h1>Ordem <%= @order.code %></h1>
+<h1>Ordem de serviço <%= @order.code %></h1>
 
 <section>
   <h4>Transportadora: <%= @order.hauler.brand_name %></h4>
+  <h4>Volume do pacote: <%= @order.cubic_meter %>m³</h4>
+  <h4>Endereço: <%= @order.address %></h4>
+  <h4>Distância: <%= @order.distance %>kms</h4>
+  <h4>Peso: <%= @order.weight %><%= @order.weight == 1 ? 'kg' : 'kgs' %></h4>
   <h4>Prazo de entrega: <%= @order.days %> <%= @order.days == 1 ? 'dia' : 'dias' %></h4>
-  <h4><%= number_to_currency(@order.price) %></h4>
+  <h4>Valor total: <%= number_to_currency(@order.price) %></h4>
+  <h4>Status: <%= @order.status %></h4>
 </section>

@@ -26,24 +26,38 @@
     <%= form.number_field :distance %>
   </fieldset>
 
+  <fieldset>
+    <%= form.label :address, 'Endereço' %>
+    <%= form.text_field :address %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :user, 'Solicitante' %>
+    <%= form.text_field :user %>
+  </fieldset>
+
   <%= form.submit 'CONSULTAR' %>
 <% end %>
 
  
 <% if @prices.empty? %>
-  <strong>Nenhuma transportadora ativa</strong>
+  <p>Nenhuma transportadora ativa</p>
 <% else %>
-  <% if params[:heigth].present? && params[:depth].present? && params[:width].present? && params[:distance].present? && params[:weight].present? %>
+  <% if @have_params %>
     <% @prices.each do |price| %>
       <% hauler = price.hauler %>
       <% if @cubic_meter >= price.min_cubic_meter && @cubic_meter <= price.max_cubic_meter && @weight >= price.min_weight && @weight <= price.max_weight && @distance >= hauler.delivery_dates.map {|d| d.distance_1 }.slice(0) && @distance <= hauler.delivery_dates.map {|d| d.distance_2 }.slice(0) %>
         <hr>
         <section>
+
           <strong>Transportadora: <%= price.hauler.brand_name %></strong>
           <p>Volume do pacote: <%= @cubic_meter %>m³</p>
+          <p>Endereço: <%= @address %></p>
           <p>Distância: <%= @distance %>kms</p>
+          <p>Peso: <%= @weight %><%= @weight == 1 ? 'kg' : 'kgs' %></p>
           <p>Valor total: <%= number_to_currency(price.km_price.to_f * @distance) %> reais</p>
           <p>Prazo: <%= hauler.delivery_dates.map {|d| d.days }.slice(0) %> <%= hauler.delivery_dates.map {|d| d.days }.slice(0) == 1 ? 'dia' : 'dias' %></p>
+          <p>Solicitante: <%= @user %></p>
 
           <%= form_with url: '/admin/orders', data: { turbo_confirm: 'Confirmar?' }, method: :post do |f| %>
             <%= f.hidden_field :heigth %>
@@ -68,14 +82,23 @@
             <%= hidden_field_tag 'price', price.km_price.to_f * @distance %>
         
             <%= f.hidden_field :days %>
-            <%= hidden_field_tag 'days', price.hauler.delivery_dates.map {|p|p.days }.slice(0) %>      
+            <%= hidden_field_tag 'days', price.hauler.delivery_dates.map {|p|p.days }.slice(0) %>
+
+            <%= f.hidden_field :address %>
+            <%= hidden_field_tag 'address', @address %>
+
+            <%= f.hidden_field :user %>
+            <%= hidden_field_tag 'user', @user %>
+
           <%= f.submit "Registrar ordem de serviço #{price.hauler.brand_name}" %>
           <% end %>
+
         </section>
       <% else %>
-        <p>Nenhuma transportadora capaz de transportar essa encomenda</p>
+        <p>Transportadora <%= hauler.brand_name %> não é capaz de realizar esse pedido</p>
       <% end %>
     <% end %>
-      <%= link_to 'Limpar', render: admin_prices_path %> 
+
+    <%= link_to 'Limpar', render: admin_prices_path %> 
   <% end %>
 <% end %>

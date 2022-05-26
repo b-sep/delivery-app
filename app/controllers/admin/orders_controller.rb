@@ -24,6 +24,6 @@ class Admin::OrdersController < ApplicationController
   private
   
   def order_params
-    params.permit(:heigth, :depth, :width, :distance, :weight, :price, :days)
+    params.permit(:heigth, :depth, :width, :distance, :weight, :price, :days, :user, :address)
   end
 end

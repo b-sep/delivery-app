@@ -10,7 +10,7 @@ RSpec.describe Vehicle, type: :model do
       Price.create!(min_cubic_meter: 0.001, max_cubic_meter: 0.500, min_weight: 1, max_weight: 20, km_price: 2, hauler: hauler)
       DeliveryDate.create!(distance_1: 0, distance_2: 100, days: 1, hauler: hauler)
 
-      expect(Hauler.reflect_on_all_associations.map(&:name).count).to eq 4
+      expect(Hauler.reflect_on_all_associations.map(&:name).count).to eq 5
       expect(hauler.status).to eq 'active'
     end
 

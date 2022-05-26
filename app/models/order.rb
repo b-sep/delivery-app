@@ -1,6 +1,14 @@
 class Order < ApplicationRecord
+  before_validation :cubic_meter
   before_validation :generate_code
   belongs_to :hauler
+
+
+  enum status: {pending: 0, accepted: 5, recused: 10}, _default: :pending
+
+  def cubic_meter
+    (self.heigth.to_f * self.depth * self.width) / 1_000_000
+  end
 
   private
 
@@ -12,4 +20,5 @@ class Order < ApplicationRecord
       code
     end
   end
+
 end
