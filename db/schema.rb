@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_164615) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_27_050449) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,7 +59,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_164615) do
     t.string "days"
     t.string "user"
     t.string "address"
+    t.integer "vehicle_id"
     t.index ["hauler_id"], name: "index_orders_on_hauler_id"
+    t.index ["vehicle_id"], name: "index_orders_on_vehicle_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -104,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_164615) do
 
   add_foreign_key "delivery_dates", "haulers"
   add_foreign_key "orders", "haulers"
+  add_foreign_key "orders", "vehicles"
   add_foreign_key "prices", "haulers"
   add_foreign_key "users", "haulers"
   add_foreign_key "vehicles", "haulers"

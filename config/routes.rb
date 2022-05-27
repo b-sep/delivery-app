@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
-    resources :haulers, only: %i[ show ] do
+    resources :haulers, only: %i[show] do
       resources :vehicles, only: %i[ index show new create]
-      resources :prices, only: %i[ index new create ]
-      resources :delivery_dates, only: %i[ index new create ]
+      resources :prices, only: %i[index new create]
+      resources :delivery_dates, only: %i[index new create]
+      resources :orders, only: %i[show edit update]
     end
   end
 end

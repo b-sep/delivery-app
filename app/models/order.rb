@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   before_create :cubic_meter
   before_create :generate_code
   belongs_to :hauler
+  has_many :vehicle
 
   validates :heigth, :depth, :width, :distance, :weight, :price, :days, :user, :address, presence: true
   validates :heigth, :depth, :width, :distance, :weight, :price, numericality: true

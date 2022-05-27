@@ -10,6 +10,8 @@
   <h4>Nenhuma Ordem de serviço aberta =(</h4>
 <% else %>
   <% @orders.each do |order| %>
-    <h5>Ordem: <%= order.code %> | status: <%= Order.human_attribute_name(order.status) %></h5>
+    <%= link_to user_hauler_order_path(@hauler, order) do %>
+      <h5>Ordem: <%= order.code %> | status: <%= Order.human_attribute_name(order.status) %></h5>
+    <% end %>
   <% end %>
 <% end %>

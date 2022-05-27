@@ -1,0 +1,24 @@
+<h1>Ordem de serviço <%= @order.code %></h1>
+
+<hr>
+
+<section>
+  <h4>Transportadora: <%= @order.hauler.brand_name %></h4>
+  <h4>Volume do pacote: <%= @order.cubic_meter %>m³</h4>
+  <h4>Endereço: <%= @order.address %></h4>
+  <h4>Distância: <%= @order.distance %>kms</h4>
+  <h4>Peso: <%= @order.weight %><%= @order.weight == 1 ? 'kg' : 'kgs' %></h4>
+  <h4>Prazo de entrega: <%= @order.days %> <%= @order.days == 1 ? 'dia' : 'dias' %></h4>
+  <h4>Valor total: <%= number_to_currency(@order.price) %></h4>
+  <h4>Status: <%= Order.human_attribute_name(@order.status) %></h4>
+  <% if @order.vehicle_id == nil %>
+    <%= form_with url: [:user, @hauler, @order], data: { turbo_confirm: 'Confirmar?' }, method: :patch do |f| %>
+      <h4>
+        <%= f.label :vehicle %>
+        <%= f.collection_select :vehicle, @vehicles, :id, :car_model, :include_blank => true %><br>
+
+        <%= f.submit 'Aceitar ordem de serviço' %>
+      </h4>
+    <% end %>
+  <% end %>
+</section>
