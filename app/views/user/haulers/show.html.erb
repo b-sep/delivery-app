@@ -1,5 +1,15 @@
-<h1>Transportadora: <%= @hauler.brand_name %></h1>
+<h1>Transportadora <%= @hauler.brand_name %></h1>
 
 <%= link_to 'Gerenciar Veículos', user_hauler_vehicles_path(@hauler) %>
 <%= link_to 'Gerenciar preços', user_hauler_prices_path(@hauler) %>
 <%= link_to 'Gerenciar prazos', user_hauler_delivery_dates_path(@hauler) %>
+
+<h2>Ordens de Serviço</h2>
+
+<% if @orders.empty? %>
+  <h4>Nenhuma Ordem de serviço aberta =(</h4>
+<% else %>
+  <% @orders.each do |order| %>
+    <h5>Ordem: <%= order.code %> | status: <%= Order.human_attribute_name(order.status) %></h5>
+  <% end %>
+<% end %>

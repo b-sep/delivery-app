@@ -14,7 +14,7 @@ class User::PricesController < ApplicationController
     if @price.save
       redirect_to user_hauler_prices_path(@hauler), notice: 'Preço cadastrado com sucesso!'
     else
-      flash.now[:notice] = 'Erro ao cadastrar preço'
+      flash.now[:alert] = 'Erro ao cadastrar preço'
       render :new, status: :unprocessable_entity
     end
   end

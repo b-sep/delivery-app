@@ -23,7 +23,7 @@ describe 'usuário se cadastra na aplicação' do
       expect(page).to have_link 'Sair'
     end
     expect(page).to have_content 'Cadastro criado com sucesso'
-    expect(page).to have_content 'Transportadora: Transporte 322'
+    expect(page).to have_content 'Transportadora Transporte 322'
     expect(User.last.hauler).to eq Hauler.last
   end
 end

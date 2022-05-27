@@ -14,7 +14,7 @@ class User::DeliveryDatesController < ApplicationController
     if @delivery_date.save
       redirect_to user_hauler_delivery_dates_path(@hauler), notice: 'Prazo cadastrado com sucesso!'
     else
-      flash.now[:notice] = 'Erro ao salvar prazo'
+      flash.now[:alert] = 'Erro ao salvar prazo'
       render :new, status: :unprocessable_entity
     end
   end

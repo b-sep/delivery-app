@@ -19,7 +19,7 @@ class User::VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to [:user, @hauler, @vehicle], notice: 'Veículo cadastrado com sucesso!'
     else
-      flash.now[:notice] = 'Erro ao salvar veículo'
+      flash.now[:alert] = 'Erro ao salvar veículo'
       render :new, status: :unprocessable_entity
     end
   end
