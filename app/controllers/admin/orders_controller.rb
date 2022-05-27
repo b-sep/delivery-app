@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   def index
-    @haulers = Hauler.active
+    @orders = Order.all
   end
 
   def new

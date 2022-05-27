@@ -16,6 +16,7 @@ describe 'Admin visualiza detalhes de uma transportadora' do
     expect(page).to have_content 'qnd 03'
     expect(page).to have_content 'E-mail: transporte.com.br'
     expect(page).to have_content 'Status: Ativa'
+    expect(page).to have_link 'Transportadoras'
   end
 
   it 'inativa com sucesso' do
@@ -33,5 +34,11 @@ describe 'Admin visualiza detalhes de uma transportadora' do
     expect(page).to have_content 'qnd 03'
     expect(page).to have_content 'E-mail: transporte.com.br'
     expect(page).to have_content 'Status: Inativa'
+  end
+
+  it 'e precisa estar logado para ver detalhes' do
+    visit admin_haulers_path
+
+    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
   end
 end

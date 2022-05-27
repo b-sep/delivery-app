@@ -1,7 +1,10 @@
 class Order < ApplicationRecord
-  before_validation :cubic_meter
-  before_validation :generate_code
+  before_create :cubic_meter
+  before_create :generate_code
   belongs_to :hauler
+
+  validates :heigth, :depth, :width, :distance, :weight, :price, :days, :user, :address, presence: true
+  validates :heigth, :depth, :width, :distance, :weight, :price, numericality: true
 
 
   enum status: {pending: 0, accepted: 5, recused: 10}, _default: :pending

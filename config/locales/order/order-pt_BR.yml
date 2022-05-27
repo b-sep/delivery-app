@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      order: 'Ordem de serviço'
+    attributes:
+      order:
+        heigth: 'Altura'
+        depth: 'Profundidade'
+        width: 'Largura'
+        distance: 'Distância'
+        weight: 'Peso'
+        pending: 'Pendente'
+        accepted: 'Aceita'
+        recused: 'Recusada'
+        price: 'Preço'
+        days: 'Dias'
+        user: 'Usuário'

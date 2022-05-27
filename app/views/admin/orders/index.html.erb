@@ -1,0 +1,16 @@
+<h1>Ordens de serviço</h1>
+
+<% if @orders.empty? %>
+  <h4>Nenhuma ordem de serviço cadastrada</h4>
+<% else %>
+  <% @orders.each do |order| %>
+    <section>
+      <%= link_to admin_order_path(order) do %>
+        <h4>Transportadora <%= order.hauler.brand_name %></h4>
+        <p>
+          Ordem: <%= order.code %>
+        </p>
+      <% end %>
+    </section>
+  <% end %>
+<% end %>

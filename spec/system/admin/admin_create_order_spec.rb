@@ -31,7 +31,7 @@ describe 'admin cria ordem de serviço' do
     expect(page).to have_content 'Prazo de entrega: 1 dia'
     expect(page).to have_content 'Peso: 13kgs'
     expect(page).to have_content 'Valor total: R$ 160,00'
-    expect(page).to have_content 'Status: pending'
+    expect(page).to have_content 'Status: Pendente'
     expect(current_path).to eq '/admin/orders/1'
     expect(Order.last).to eq hauler.orders.last
   end
