@@ -15,10 +15,20 @@ describe 'Usuário aceita ordem de serviço' do
     login_as user, :scope => :user
     visit user_hauler_path(hauler)
     click_on "Ordem: #{order.code}"
-    select 'clio', from: 'Vehicle'
+    select 'clio', from: 'Veículo'
     click_on 'Aceitar ordem de serviço'
 
     expect(page).to have_content 'Ordem de serviço aceita com sucesso'
-    expect(page).to have_content 'status: Aceita'
+    expect(page).to have_content 'Status: Aceita'
+    expect(page).not_to have_content 'Status: Pendente'
+    expect(current_path).to eq user_hauler_order_path(hauler, order)
+  end
+
+  it 'e precisa estar logado' do
+    hauler = Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', email_domain: 'transporte.com.br')
+
+    visit user_hauler_path(hauler)
+
+    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
   end
 end

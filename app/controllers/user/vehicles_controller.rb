@@ -4,7 +4,7 @@ class User::VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[show]
 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = @hauler.vehicles
   end
 
   def show; end

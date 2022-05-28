@@ -2,7 +2,7 @@ class User::PricesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_hauler, only: %i[index new create]
   def index
-    @prices = Price.all
+    @prices = @hauler.prices
   end
 
   def new

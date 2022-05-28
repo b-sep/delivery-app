@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     get '/delivery-app', to: 'admins#index'
     resources :haulers
     resources :prices, only: %i[index]
-    resources :orders, only: %i[index new create show]
-    
+    resources :orders, only: %i[index create show]
   end
 
   namespace :user do

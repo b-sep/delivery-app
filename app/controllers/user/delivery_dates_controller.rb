@@ -2,7 +2,7 @@ class User::DeliveryDatesController < ApplicationController
   before_action :get_hauler, only: %i[index new create]
   before_action :authenticate_user!
   def index
-    @delivery_dates = DeliveryDate.all
+    @delivery_dates = @hauler.delivery_dates
   end
 
   def new

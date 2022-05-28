@@ -3,10 +3,7 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.all
   end
-
-  def new
-  end
-
+  
   def create
     @hauler = Hauler.find(params[:hauler])
     @order = @hauler.orders.new(order_params)
@@ -27,4 +24,5 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.permit(:heigth, :depth, :width, :distance, :weight, :price, :days, :user, :address)
   end
+  
 end
