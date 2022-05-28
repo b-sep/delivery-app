@@ -16,7 +16,9 @@ Rails.application.routes.draw do
       resources :vehicles, only: %i[ index show new create]
       resources :prices, only: %i[index new create]
       resources :delivery_dates, only: %i[index new create]
-      resources :orders, only: %i[show edit update]
+      resources :orders, only: %i[show edit update] do
+        resources :order_historics, only: %i[new create]
+      end
     end
   end
 end

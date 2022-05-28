@@ -1,0 +1,10 @@
+<h1>
+  Ordem <%= @order.code %>
+</h1>
+
+<%= form_with model: [:user, @hauler, @order, @order_historic] do |f| %>
+  <strong><%= f.label :address %></strong>
+  <%= f.text_field :address, autofocus: true %>
+
+  <%= f.submit 'ATUALIZAR' %>
+<% end %>

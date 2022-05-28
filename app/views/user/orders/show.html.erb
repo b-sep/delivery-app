@@ -1,4 +1,7 @@
 <h1>Ordem de serviço <%= @order.code %></h1>
+<% if @order.accepted? %>
+  <%= link_to 'Atualizar ordem de serviço', new_user_hauler_order_order_historic_path(@hauler, @order) %>
+<% end %>
 
 <hr>
 
@@ -26,3 +29,14 @@
     <h4>Veículo: <%= vehicle.car_model %></h4>
   <% end %>
 </section>
+
+<% if @order.accepted? %>
+    <hr>
+  <section class="mt-5">
+    <h3>Rastreamento detalhado</h3>
+    <% @order_historics.each do |historic| %>
+      <h3><%= historic.address %><h3>
+      <h3><%= I18n.localize(historic.created_at, format: :long) %></h3>
+    <% end %>
+  <section>
+<% end %>

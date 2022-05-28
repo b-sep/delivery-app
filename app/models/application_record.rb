@@ -7,6 +7,7 @@ class ApplicationRecord < ActiveRecord::Base
   def change_hauler_status
     return if self.class == Hauler
     return if self.class == Admin
+    return if self.class == OrderHistoric
     
     hauler = self.hauler
     return if hauler.vehicles.empty?

@@ -4,6 +4,7 @@ class User::OrdersController < ApplicationController
   before_action :get_vehicle, only: %i[update]
   
   def show
+    @order_historics = @order.order_historics
     @vehicles = @hauler.vehicles
   end
 

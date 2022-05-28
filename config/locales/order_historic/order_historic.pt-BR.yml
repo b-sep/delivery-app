@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      order_historic: 'Histórico do pedido'
+    attributes:
+      order_historic:
+        address: 'Endereço'
