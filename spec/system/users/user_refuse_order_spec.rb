@@ -19,4 +19,11 @@ describe 'Usuário recusa ordem de serviço' do
     expect(page).to have_content 'Ordem de serviço recusada'
     expect(page).to have_content 'Status: Recusada'
   end
+
+  it 'e precisa estar logado' do
+    hauler = Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', email_domain: 'transporte.com.br')
+    visit user_hauler_path(hauler)
+
+    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+  end
 end

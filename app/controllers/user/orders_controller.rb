@@ -1,4 +1,5 @@
 class User::OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_hauler, only: %i[show update]
   before_action :get_order, only: %i[show update]
   before_action :get_vehicle, only: %i[update]

@@ -1,4 +1,5 @@
 class User::OrderHistoricsController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_hauler, only: %i[new create]
   before_action :get_order, only: %i[new create]
 
