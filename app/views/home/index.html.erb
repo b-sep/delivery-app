@@ -1,6 +1,24 @@
 
+<search>
+  <%= form_tag root_path, method: :get, class: "input-group mt-5 mb-5" do %> 
+    <%= search_field_tag :search, nil, placeholder: 'Código da ordem', class: "form-control rounded" %> 
+    <%= submit_tag 'Rastrear Ordem', class: "btn btn-outline-primary" %> 
+  <% end %>
+</search>
 
-<div class="input-group mt-5">
-  <input type="search" class="form-control rounded" placeholder="Código da ordem" aria-label="Search" aria-describedby="search-addon" />
-  <button type="button" class="btn btn-outline-primary">Rastrear</button>
-</div>
+<% if params[:search].present? %>
+
+  <% if @order.present? %>
+    <% if @order_historics.present? %>
+      <% @order_historics.each do |historic| %>
+        Ordem <%= @order.code %><br>
+        <%= historic.address %>
+        <%= I18n.localize(historic.created_at, format: :long) %>
+      <% end %>
+    <% else %>
+      <p>Ordem de serviço <%= @order.code %> sem atualização</p>
+    <% end %>
+  <% else %>
+    <p>Ordem de serviço não encontrada</p>
+  <% end %>
+<% end %>

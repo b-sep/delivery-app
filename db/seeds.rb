@@ -26,3 +26,5 @@ DeliveryDate.create!(distance_1: 0, distance_2: 100, days: 1, hauler: hauler)
 DeliveryDate.create!(distance_1: 0, distance_2: 100, days: 3, hauler: hauler2)
 
 Order.create!(heigth: 10, depth: 10, width: 20, distance: 200, weight: 14, price: 20, days: 2, user: 'Júnior', address: 'qs 19', hauler: hauler)
+
+Order.create!(heigth: 10, depth: 10, width: 220, distance: 200, weight: 14, price: 20, days: 2, user: 'Júnior', address: 'qs 19', hauler: hauler)

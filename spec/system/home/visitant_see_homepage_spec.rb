@@ -8,5 +8,6 @@ describe 'visitante acessa página inicial da aplicação' do
     expect(page).to have_content 'Entrar'
     expect(page).to have_content 'Admin?'
     expect(page).to have_link(root_path)
+    expect(page).to have_field 'search'
   end
 end
