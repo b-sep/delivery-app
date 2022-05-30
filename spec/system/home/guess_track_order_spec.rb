@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'visitante acessa página inicial' do
   it 'e busca ordem de serviço pelo código com sucesso' do
     hauler = Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', email_domain: 'transporte.com.br', status: 'active')
-    order = Order.create!(heigth: 10, depth: 10, width: 20, distance: 200, weight: 14, price: 20, days: 2, user: 'Júnior', address: 'qs 19', hauler: hauler)
+    order = Order.create!(heigth: 10, depth: 10, width: 20, distance: 200, weight: 14, price: 20, days: 2, user: 'Júnior', address: 'qs 19', hauler: hauler, status: 'accepted')
     OrderHistoric.create!(address: 'galpao sp', order: order)
 
     visit root_path
@@ -15,7 +15,7 @@ describe 'visitante acessa página inicial' do
 
   it 'e ordem de serviço não tem atualização' do
     hauler = Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', email_domain: 'transporte.com.br', status: 'active')
-    order = Order.create!(heigth: 10, depth: 10, width: 20, distance: 200, weight: 14, price: 20, days: 2, user: 'Júnior', address: 'qs 19', hauler: hauler)
+    order = Order.create!(heigth: 10, depth: 10, width: 20, distance: 200, weight: 14, price: 20, days: 2, user: 'Júnior', address: 'qs 19', hauler: hauler, status: 'accepted')
 
     visit root_path
     fill_in 'search', with: order.code

@@ -10,15 +10,16 @@
 
   <% if @order.present? %>
     <% if @order_historics.present? %>
+      <h4>Ordem de serviço - <%= @order.code %><br></h4>
+      <h4>Responsável pela entrega - <%= @order.hauler.brand_name %></h4>
       <% @order_historics.each do |historic| %>
-        Ordem <%= @order.code %><br>
         <%= historic.address %>
-        <%= I18n.localize(historic.created_at, format: :long) %>
+        <%= I18n.localize(historic.created_at, format: :long) %><br>
       <% end %>
     <% else %>
       <p>Ordem de serviço <%= @order.code %> sem atualização</p>
     <% end %>
   <% else %>
-    <p>Ordem de serviço não encontrada</p>
+    <p>Ordem de serviço não encontrada ou não aceita.</p>
   <% end %>
 <% end %>
