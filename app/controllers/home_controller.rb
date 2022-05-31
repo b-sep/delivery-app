@@ -4,7 +4,8 @@ class HomeController < ApplicationController
   def index
     if @order.present?
       @order_historics = @order.order_historics
-    end
+      @vehicle = Vehicle.find(@order.vehicle_id)
+    end   
   end
 
   private

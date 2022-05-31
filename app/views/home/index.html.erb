@@ -7,19 +7,19 @@
 </search>
 
 <% if params[:search].present? %>
-
   <% if @order.present? %>
     <% if @order_historics.present? %>
       <h4>Ordem de serviço - <%= @order.code %><br></h4>
       <h4>Responsável pela entrega - <%= @order.hauler.brand_name %></h4>
+      <h4>Veículo - <%= @vehicle.car_model %></h4>
       <% @order_historics.each do |historic| %>
         <%= historic.address %>
         <%= I18n.localize(historic.created_at, format: :long) %><br>
       <% end %>
     <% else %>
-      <p>Ordem de serviço <%= @order.code %> sem atualização</p>
+      <h4>Ordem de serviço <%= @order.code %> sem atualização</h4>
     <% end %>
   <% else %>
-    <p>Ordem de serviço não encontrada ou não aceita.</p>
+    <h4>Ordem de serviço não encontrada ou não aceita.</h4>
   <% end %>
 <% end %>
