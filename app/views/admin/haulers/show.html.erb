@@ -10,3 +10,12 @@
   <h5>E-mail: <%= @hauler.email_domain %></h5>
   <h5>Status: <%= Hauler.human_attribute_name("#{@hauler.status}") %></h5>
 </section>
+
+<%= form_with model: [:admin, @hauler], method: :patch do |f| %>
+  <h5>
+    <%= f.label :staus, 'Status' %>
+    <%= f.select :status, options_for_select(Hauler.statuses.map {|key, value| [Hauler.human_attribute_name(key), Hauler.statuses.key(value)]}, @hauler.status) %>
+
+    <%= f.submit 'Atualizar status' %>
+  </h5>
+<% end %>

@@ -1,6 +1,6 @@
 class Admin::HaulersController < ApplicationController 
   before_action :authenticate_admin!
-  before_action :get_hauler, only: %i[show]
+  before_action :get_hauler, only: %i[show update]
 
   def index
     @haulers = Hauler.all
@@ -23,6 +23,14 @@ class Admin::HaulersController < ApplicationController
   end
 
   def show; end
+
+  def update
+    @hauler.status = params[:hauler][:status]
+
+    if @hauler.save
+      redirect_to admin_hauler_path(@hauler), notice: 'Status atualizado'
+    end
+  end
 
   private
 
