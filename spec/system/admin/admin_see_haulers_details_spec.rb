@@ -37,7 +37,9 @@ describe 'Admin visualiza detalhes de uma transportadora' do
   end
 
   it 'e precisa estar logado para ver detalhes' do
-    visit admin_haulers_path
+    h = Hauler.create!(brand_name: 'Transporte 322', corporate_name: 'Transporte LTDA', registration_number: '00000000000000', address: 'qnd 03', 
+                       email_domain: 'transporte.com.br')
+    visit admin_hauler_path(h)
 
     expect(page).to have_content 'Para continuar, faça login ou registre-se.'
   end
